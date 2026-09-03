@@ -75,8 +75,3 @@ python app.py
 ```
 
 Then open the application in your browser using the local Flask server address.
-
-
-
-This version is suitable for a **GitHub repository README** and highlights the NLP, Flask API, YouTube comment extraction, and custom slang/emoji processing that are actually present in your project.
-```
