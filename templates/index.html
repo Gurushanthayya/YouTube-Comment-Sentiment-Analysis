@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Comment Sentiment Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-animation"></div>
+    <div class="container">
+        <header>
+            <h1>YouTube Analyzer</h1>
+            <p>Discover the true sentiment of any YouTube video's audience.</p>
+        </header>
+
+        <main>
+            <div class="search-box glass-panel">
+                <form id="analyze-form">
+                    <input type="url" id="url-input" placeholder="Paste YouTube Video URL here..." required>
+                    <button type="submit" id="submit-btn">
+                        <span>Analyze</span>
+                        <div class="spinner" id="spinner" style="display: none;"></div>
+                    </button>
+                </form>
+                <div id="error-message" class="error-msg" style="display: none;"></div>
+            </div>
+
+            <div id="results-section" class="results-section" style="display: none;">
+                <div class="overview glass-panel">
+                    <h2>Sentiment Overview</h2>
+                    <div class="chart-container">
+                        <canvas id="sentiment-chart"></canvas>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-box positive">
+                            <span class="label">Positive</span>
+                            <span class="value" id="stat-pos">0%</span>
+                        </div>
+                        <div class="stat-box neutral">
+                            <span class="label">Neutral</span>
+                            <span class="value" id="stat-neu">0%</span>
+                        </div>
+                        <div class="stat-box negative">
+                            <span class="label">Negative</span>
+                            <span class="value" id="stat-neg">0%</span>
+                        </div>
+                    </div>
+                    <p class="total-analyzed">Analyzed <span id="total-count">0</span> comments</p>
+                </div>
+
+                <div class="comments-breakdown glass-panel">
+                    <h2>Recent Comments</h2>
+                    <div id="comments-list" class="comments-list">
+                        <!-- Comments will be injected here via JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
